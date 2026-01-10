@@ -259,10 +259,12 @@ abstract class Cipher {
   Future<String> decryptString(
     SecretBox secretBox, {
     required SecretKey secretKey,
+    List<int> aad = const [],
   }) async {
     final clearText = await decrypt(
       secretBox,
       secretKey: secretKey,
+      aad: aad,
     );
     try {
       return utf8.decode(clearText);
